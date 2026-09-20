@@ -33,11 +33,22 @@ const obligations = [
   },
 ];
 
+function BrandMark({ className = '' }) {
+  return (
+    <svg className={className} viewBox="0 0 64 64" role="img" aria-label="Danirwa">
+      <path d="M7 7h22c17 0 28 9.7 28 25S46 57 29 57H7V7Z" fill="currentColor" />
+      <path d="M17 17h12c10.5 0 18 5.4 18 15s-7.5 15-18 15H17V17Z" fill="var(--canvas)" />
+      <path d="M22 32.5l5.2 5.2L38.5 25.8" fill="none" stroke="currentColor" strokeWidth="4.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M13 7v50M7 19h10M7 31h10M7 43h10" fill="none" stroke="var(--canvas)" strokeWidth="2.4" />
+    </svg>
+  );
+}
+
 function Wordmark() {
   return (
     <a className="wordmark" href="/" aria-label="Danirwa home">
-      <span className="wordmark-mark" aria-hidden="true">D</span>
-      <span>danirwa</span>
+      <BrandMark className="brand-mark" />
+      <span className="wordmark-text">danirwa</span>
     </a>
   );
 }
@@ -58,7 +69,8 @@ function Header() {
         <Wordmark />
         <nav className="desktop-nav" aria-label="Primary navigation">
           <a href="/#how-it-works">How it works</a>
-          <a href="/#what-it-tracks">What it tracks</a>
+          <a href="/#what-it-tracks">Use cases</a>
+          <a href="/#approach">Our approach</a>
           <a href="/support">Support</a>
           <a className="nav-cta" href="mailto:hello@danirwa.com?subject=Danirwa%20early%20access">Request early access</a>
         </nav>
@@ -70,14 +82,16 @@ function Header() {
             <Dialog.Overlay className="dialog-overlay" />
             <Dialog.Content className="mobile-menu-panel" aria-describedby={undefined}>
               <div className="mobile-menu-top">
-                <Dialog.Title asChild><span className="mobile-menu-title">Menu</span></Dialog.Title>
+                <Wordmark />
+                <Dialog.Title className="sr-only">Danirwa navigation</Dialog.Title>
                 <Dialog.Close asChild>
                   <button className="mobile-menu-button" aria-label="Close menu"><MenuIcon close /></button>
                 </Dialog.Close>
               </div>
               <nav className="mobile-nav" aria-label="Mobile navigation">
                 <Dialog.Close asChild><a href="/#how-it-works">How it works</a></Dialog.Close>
-                <Dialog.Close asChild><a href="/#what-it-tracks">What it tracks</a></Dialog.Close>
+                <Dialog.Close asChild><a href="/#what-it-tracks">Use cases</a></Dialog.Close>
+                <Dialog.Close asChild><a href="/#approach">Our approach</a></Dialog.Close>
                 <Dialog.Close asChild><a href="/support">Support</a></Dialog.Close>
                 <Dialog.Close asChild><a href="/privacy">Privacy</a></Dialog.Close>
                 <Dialog.Close asChild><a href="/terms">Terms</a></Dialog.Close>
@@ -91,40 +105,76 @@ function Header() {
   );
 }
 
-function HeroCalendar() {
+function SignalIcon({ type }) {
+  if (type === 'clock') {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.5v5l3.4 2"/></svg>;
+  }
+  if (type === 'family') {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.5" cy="8" r="2.6"/><circle cx="15.8" cy="9" r="2.2"/><path d="M3.8 18c.7-3.2 2.4-4.8 4.9-4.8s4.3 1.6 5 4.8M13.5 14.4c.8-.8 1.8-1.2 3-1.2 2.1 0 3.5 1.3 4.1 3.9"/></svg>;
+  }
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.6 19 6v5.5c0 4.3-2.8 7.4-7 9-4.2-1.6-7-4.7-7-9V6l7-2.4Z"/><path d="m8.4 12 2.3 2.3 4.9-5"/></svg>;
+}
+
+function HeroDashboard() {
+  const nav = ['Home', 'Dates', 'Documents', 'Insurance', 'Certifications', 'Family'];
   return (
-    <div className="hero-product" aria-label="Prototype preview of Danirwa obligation timeline">
-      <div className="prototype-label">Prototype preview</div>
-      <div className="hero-product-head">
-        <div>
-          <p className="product-kicker">September</p>
-          <h2>Your next important dates</h2>
-        </div>
-        <span className="product-count">4 upcoming</span>
+    <div className="product-scene" aria-label="Prototype preview of Danirwa dashboard">
+      <div className="scene-meta">
+        <span>Prototype</span>
+        <span>Renewal GPS</span>
       </div>
-      <div className="timeline-list">
-        <div className="timeline-row is-near">
-          <div className="date-block"><span>SEP</span><strong>29</strong></div>
-          <div className="timeline-copy"><strong>Passport renewal</strong><span>9 days</span></div>
-          <div className="status-pill">Soon</div>
-        </div>
-        <div className="timeline-row">
-          <div className="date-block"><span>OCT</span><strong>18</strong></div>
-          <div className="timeline-copy"><strong>Auto registration</strong><span>28 days</span></div>
-          <span className="row-mark" aria-hidden="true" />
-        </div>
-        <div className="timeline-row">
-          <div className="date-block"><span>NOV</span><strong>04</strong></div>
-          <div className="timeline-copy"><strong>Professional certification</strong><span>45 days</span></div>
-          <span className="row-mark" aria-hidden="true" />
-        </div>
-        <div className="timeline-row">
-          <div className="date-block"><span>JAN</span><strong>12</strong></div>
-          <div className="timeline-copy"><strong>Family records review</strong><span>114 days</span></div>
-          <span className="row-mark" aria-hidden="true" />
+      <div className="app-window">
+        <aside className="app-sidebar" aria-hidden="true">
+          <div className="app-mini-brand"><BrandMark className="app-mini-mark" /><span>danirwa</span></div>
+          <div className="app-nav">
+            {nav.map((item, index) => <span className={index === 0 ? 'active' : ''} key={item}>{item}</span>)}
+          </div>
+          <span className="app-settings">Settings</span>
+        </aside>
+        <div className="app-main">
+          <div className="app-main-top">
+            <div>
+              <span className="app-overline">Good morning</span>
+              <strong>Here&apos;s what&apos;s coming up.</strong>
+            </div>
+            <div className="app-avatar" aria-hidden="true">D</div>
+          </div>
+          <div className="app-summary" aria-hidden="true">
+            <div><strong>4</strong><span>Upcoming</span></div>
+            <div><strong>2</strong><span>Due soon</span></div>
+            <div><strong>8</strong><span>All clear</span></div>
+          </div>
+          <div className="dates-panel">
+            <div className="dates-panel-head">
+              <strong>Your next important dates</strong>
+              <span>4 upcoming</span>
+            </div>
+            <div className="timeline-list">
+              <div className="timeline-row is-near">
+                <div className="date-block"><span>SEP</span><strong>29</strong></div>
+                <div className="timeline-copy"><strong>Passport renewal</strong><span>9 days away</span></div>
+                <div className="status-pill">Soon</div>
+              </div>
+              <div className="timeline-row">
+                <div className="date-block"><span>OCT</span><strong>18</strong></div>
+                <div className="timeline-copy"><strong>Auto registration</strong><span>28 days away</span></div>
+                <span className="row-mark" aria-hidden="true" />
+              </div>
+              <div className="timeline-row">
+                <div className="date-block"><span>NOV</span><strong>04</strong></div>
+                <div className="timeline-copy"><strong>Professional certification</strong><span>45 days away</span></div>
+                <span className="row-mark" aria-hidden="true" />
+              </div>
+              <div className="timeline-row">
+                <div className="date-block"><span>JAN</span><strong>12</strong></div>
+                <div className="timeline-copy"><strong>Family records review</strong><span>114 days away</span></div>
+                <span className="row-mark" aria-hidden="true" />
+              </div>
+            </div>
+            <div className="product-footnote">Example data shown for demonstration.</div>
+          </div>
         </div>
       </div>
-      <div className="product-footnote">Example data shown for demonstration.</div>
     </div>
   );
 }
@@ -158,27 +208,38 @@ function Home() {
       <main>
         <section className="hero shell">
           <div className="hero-copy">
-            <p className="intro-line">Life has too many dates to keep in your head.</p>
+            <p className="intro-line">Life admin, engineered.</p>
             <h1>Stay ahead of what matters.</h1>
-            <p className="hero-body">Danirwa gives important renewals, documents, certifications, and deadlines one calm place to live, so you can act before they become urgent.</p>
+            <p className="hero-body">Danirwa helps you manage renewals, documents, certifications, and deadlines in one calm, organized place, so you can act before they become urgent.</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#how-it-works">See how it works</a>
-              <a className="text-link" href="mailto:hello@danirwa.com?subject=Danirwa%20early%20access">Request early access</a>
+              <a className="button button-primary" href="mailto:hello@danirwa.com?subject=Danirwa%20early%20access">Request early access</a>
+              <a className="button button-secondary" href="#how-it-works"><span className="play-dot" aria-hidden="true">▶</span>See how it works</a>
             </div>
-            <p className="hero-note">Danirwa is in development. The product interface below is a prototype.</p>
+            <div className="signal-strip" aria-label="Danirwa product principles">
+              <div><SignalIcon type="shield" /><span>Less stress,<br />more clarity</span></div>
+              <div><SignalIcon type="clock" /><span>Be ready<br />before it&apos;s urgent</span></div>
+              <div><SignalIcon type="family" /><span>For you<br />and your family</span></div>
+            </div>
           </div>
-          <HeroCalendar />
+          <HeroDashboard />
         </section>
 
         <section className="statement shell" aria-labelledby="statement-title">
-          <p id="statement-title">The useful part is not remembering every date.</p>
-          <strong>It is knowing what needs attention next.</strong>
+          <div>
+            <p className="section-kicker">A better way to stay ahead</p>
+            <h2 id="statement-title">The useful part is not remembering every date.</h2>
+            <strong>It is knowing what needs attention next.</strong>
+          </div>
+          <p className="statement-copy">Danirwa turns important dates into clear next steps, so you can plan with confidence and focus on what matters most.</p>
         </section>
 
         <section id="how-it-works" className="demo-section shell" aria-labelledby="demo-title">
-          <div className="section-heading">
-            <p>One date becomes a clear next action.</p>
-            <h2 id="demo-title">From “I should remember that” to handled.</h2>
+          <div className="section-heading split-heading">
+            <div>
+              <p className="section-kicker">How it works</p>
+              <h2 id="demo-title">Three deliberate steps.</h2>
+            </div>
+            <p>From a distant date to a clear next move, Danirwa keeps the sequence simple and visible.</p>
           </div>
 
           <div className="scroll-demo">
@@ -200,7 +261,7 @@ function Home() {
               ))}
             </div>
             <div className="demo-stage" aria-live="polite">
-              <div className="prototype-label">Prototype preview</div>
+              <div className="stage-topline"><span>Prototype preview</span><span>Renewal GPS</span></div>
               <DemoCard key={activeStep} item={obligations[activeStep]} activeStep={activeStep} />
             </div>
           </div>
@@ -208,40 +269,60 @@ function Home() {
 
         <section id="what-it-tracks" className="tracks-section shell" aria-labelledby="tracks-title">
           <div className="tracks-heading">
-            <h2 id="tracks-title">Built for the obligations that quietly run your life.</h2>
-            <p>Danirwa is being designed for recurring dates and records that are easy to overlook until they are suddenly urgent.</p>
+            <div>
+              <p className="section-kicker">Built for real life</p>
+              <h2 id="tracks-title">Different parts of life. One organized place.</h2>
+            </div>
+            <p>Keep important dates and records visible across the obligations that are easiest to forget until they become urgent.</p>
           </div>
           <div className="tracks-list" role="list">
             {[
-              ['Documents', 'Passports, IDs, registrations, and other records with important dates.'],
-              ['Insurance', 'Renewals and review dates for the coverage you depend on.'],
-              ['Certifications', 'Professional, training, and recurring qualification deadlines.'],
-              ['Family admin', 'The shared dates and records that keep a household moving.'],
-            ].map(([title, body]) => (
+              ['01', 'Documents', 'Passports, IDs, registrations, and other records with important dates.'],
+              ['02', 'Insurance', 'Renewals and review dates for the coverage you depend on.'],
+              ['03', 'Certifications', 'Professional, training, and recurring qualification deadlines.'],
+              ['04', 'Family admin', 'The shared dates and records that keep a household moving.'],
+            ].map(([number, title, body]) => (
               <div className="track-row" role="listitem" key={title}>
-                <h3>{title}</h3><p>{body}</p>
+                <span className="track-number">{number}</span>
+                <h3>{title}</h3>
+                <p>{body}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="principle-section shell" aria-labelledby="principle-title">
-          <div className="principle-rule" />
-          <div className="principle-grid">
-            <h2 id="principle-title">Less dashboard. More direction.</h2>
-            <div>
-              <p>Danirwa is being built around a simple question: what deserves your attention now?</p>
-              <p>The goal is a quieter interface that surfaces the next useful action without turning personal administration into another full-time system to manage.</p>
+        <section id="approach" className="approach-section">
+          <div className="shell approach-inner">
+            <div className="approach-code" aria-hidden="true">
+              <div className="approach-axis"><span>signal</span><span>window</span><span>action</span></div>
+              <svg viewBox="0 0 520 250" role="presentation">
+                <path d="M30 190C120 190 125 120 210 120S300 80 380 80s70-32 110-32" />
+                <circle cx="30" cy="190" r="7" />
+                <circle cx="210" cy="120" r="7" />
+                <circle cx="380" cy="80" r="7" />
+                <circle cx="490" cy="48" r="7" />
+              </svg>
+              <p>Important date → action window → next move</p>
+            </div>
+            <div className="approach-copy">
+              <p className="section-kicker">Our approach</p>
+              <h2>Built for a calmer, more intentional life.</h2>
+              <p>Danirwa is built on a simple belief: you should not have to keep important dates in your head. Thoughtful design and practical automation should help you stay ahead, reduce friction, and spend more time on what matters.</p>
+              <div className="approach-principles">
+                <span>Clarity over clutter</span>
+                <span>Practical automation</span>
+                <span>Built for real life</span>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="cta-section shell">
-          <p>Danirwa is taking shape now.</p>
-          <h2>Help us build the calm way to stay ahead.</h2>
-          <div className="cta-actions">
-            <a className="button button-primary" href="mailto:hello@danirwa.com?subject=Danirwa%20early%20access">Request early access</a>
-            <a className="text-link" href="/support">Contact support</a>
+        <section className="cta-band">
+          <div className="shell cta-band-inner">
+            <p className="cta-kicker">Get started</p>
+            <h2>A calmer tomorrow starts here.</h2>
+            <p>Join early access and help shape Danirwa.</p>
+            <a className="button button-light" href="mailto:hello@danirwa.com?subject=Danirwa%20early%20access">Request early access</a>
           </div>
         </section>
       </main>
@@ -254,7 +335,7 @@ function DemoCard({ item, activeStep = 0 }) {
   return (
     <div className={`obligation-card state-${item.state}`}>
       <div className="demo-card-top">
-        <span>Renewal GPS</span>
+        <span>Auto registration renewal</span>
         <span>{activeStep + 1}/3</span>
       </div>
       <div className="demo-date"><span>{item.month}</span><strong>{item.day}</strong></div>
@@ -360,11 +441,14 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="shell footer-inner">
-        <div><Wordmark /><p>Stay ahead of what matters.</p></div>
+        <div><Wordmark /><p>Life admin, engineered for clarity.</p></div>
         <nav aria-label="Footer navigation">
+          <a href="/#how-it-works">How it works</a>
+          <a href="/#what-it-tracks">Use cases</a>
+          <a href="/#approach">Our approach</a>
+          <a href="/support">Support</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
-          <a href="/support">Support</a>
           <a href="mailto:hello@danirwa.com">hello@danirwa.com</a>
         </nav>
       </div>
