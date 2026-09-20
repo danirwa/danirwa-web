@@ -78,7 +78,7 @@ function EarlyAccessProvider({ children }) {
 
     setStatus('submitting');
     try {
-      const response = await fetch('https://formsubmit.co/ajax/hello@danirwa.com', {
+      const response = await fetch('https://formsubmit.co/ajax/e861a7b5a99b51344a07b7ea67f2fa6c', {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: formData,
