@@ -33,6 +33,154 @@ const obligations = [
   },
 ];
 
+const EarlyAccessContext = React.createContext(null);
+
+function trackEvent(event, detail = {}) {
+  const payload = {
+    event,
+    path: window.location.pathname,
+    source: detail.source || '',
+  };
+
+  fetch('/api/event', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    keepalive: true,
+  }).catch(() => {});
+}
+
+function useEarlyAccess() {
+  const value = React.useContext(EarlyAccessContext);
+  if (!value) throw new Error('useEarlyAccess must be used within EarlyAccessProvider');
+  return value;
+}
+
+function EarlyAccessProvider({ children }) {
+  const [open, setOpen] = React.useState(false);
+  const [source, setSource] = React.useState('site');
+  const [status, setStatus] = React.useState('idle');
+  const [email, setEmail] = React.useState('');
+
+  const openEarlyAccess = React.useCallback((nextSource = 'site') => {
+    setSource(nextSource);
+    setStatus('idle');
+    setOpen(true);
+    trackEvent('early_access_open', { source: nextSource });
+  }, []);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const nextEmail = String(formData.get('email') || '').trim();
+    if (!nextEmail) return;
+
+    setStatus('submitting');
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/hello@danirwa.com', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
+      if (!response.ok) throw new Error('submission failed');
+      const result = await response.json();
+      if (result.success === false) throw new Error('submission rejected');
+
+      setEmail(nextEmail);
+      setStatus('success');
+      trackEvent('early_access_success', { source });
+    } catch {
+      setStatus('error');
+      trackEvent('early_access_error', { source });
+    }
+  };
+
+  return (
+    <EarlyAccessContext.Provider value={{ openEarlyAccess }}>
+      {children}
+      <Dialog.Root open={open} onOpenChange={setOpen}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="dialog-overlay" />
+          <Dialog.Content className="early-access-dialog" aria-describedby="early-access-description">
+            <div className="early-access-head">
+              <div>
+                <p className="section-kicker">Early access</p>
+                <Dialog.Title>Help shape Danirwa.</Dialog.Title>
+              </div>
+              <Dialog.Close asChild>
+                <button className="dialog-close" type="button" aria-label="Close early access form">×</button>
+              </Dialog.Close>
+            </div>
+
+            {status === 'success' ? (
+              <div className="early-access-success" role="status">
+                <span className="success-mark" aria-hidden="true">✓</span>
+                <h3>Request received.</h3>
+                <p>We&apos;ll use <strong>{email}</strong> to follow up about Danirwa early access.</p>
+                <Dialog.Close asChild>
+                  <button className="button button-primary" type="button">Done</button>
+                </Dialog.Close>
+              </div>
+            ) : (
+              <>
+                <Dialog.Description id="early-access-description">
+                  Join the early-access list and tell us which part of life admin matters most to you.
+                </Dialog.Description>
+                <form className="early-access-form" onSubmit={handleSubmit}>
+                  <input type="hidden" name="_subject" value="New Danirwa early-access request" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="source" value={source} />
+                  <input type="hidden" name="page" value={typeof window === 'undefined' ? '/' : window.location.pathname} />
+                  <div className="honey-field" aria-hidden="true">
+                    <label>Leave this field empty<input type="text" name="_honey" tabIndex="-1" autoComplete="off" /></label>
+                  </div>
+
+                  <label className="field-label" htmlFor="early-access-email">Email address</label>
+                  <input
+                    id="early-access-email"
+                    className="field-input"
+                    type="email"
+                    name="email"
+                    autoComplete="email"
+                    inputMode="email"
+                    placeholder="you@example.com"
+                    required
+                    disabled={status === 'submitting'}
+                  />
+
+                  <label className="field-label" htmlFor="early-access-interest">What do you want help staying ahead of?</label>
+                  <select id="early-access-interest" className="field-input field-select" name="interest" defaultValue="all">
+                    <option value="all">Everything in one place</option>
+                    <option value="documents">Documents and registrations</option>
+                    <option value="insurance">Insurance renewals</option>
+                    <option value="certifications">Certifications and training</option>
+                    <option value="family">Family admin</option>
+                    <option value="other">Something else</option>
+                  </select>
+
+                  <p className="form-note">By submitting, you are asking Danirwa to contact you about early access. See <a href="/privacy">Privacy</a>.</p>
+                  {status === 'error' && (
+                    <p className="form-error" role="alert">We couldn&apos;t submit that request. You can email <a href="mailto:hello@danirwa.com">hello@danirwa.com</a> instead.</p>
+                  )}
+                  <button className="button button-primary early-access-submit" type="submit" disabled={status === 'submitting'}>
+                    {status === 'submitting' ? 'Submitting…' : 'Request early access'}
+                  </button>
+                </form>
+              </>
+            )}
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </EarlyAccessContext.Provider>
+  );
+}
+
+function EarlyAccessButton({ source, className, children }) {
+  const { openEarlyAccess } = useEarlyAccess();
+  return <button className={className} type="button" onClick={() => openEarlyAccess(source)}>{children}</button>;
+}
+
 function BrandMark({ className = '' }) {
   return (
     <svg className={className} viewBox="0 0 64 64" role="img" aria-label="Danirwa">
@@ -72,7 +220,7 @@ function Header() {
           <a href="/#what-it-tracks">Use cases</a>
           <a href="/#approach">Our approach</a>
           <a href="/support">Support</a>
-          <a className="nav-cta" href="mailto:hello@danirwa.com?subject=Danirwa%20early%20access">Request early access</a>
+          <EarlyAccessButton className="nav-cta nav-cta-button" source="header">Request early access</EarlyAccessButton>
         </nav>
         <Dialog.Root>
           <Dialog.Trigger asChild>
@@ -95,7 +243,7 @@ function Header() {
                 <Dialog.Close asChild><a href="/support">Support</a></Dialog.Close>
                 <Dialog.Close asChild><a href="/privacy">Privacy</a></Dialog.Close>
                 <Dialog.Close asChild><a href="/terms">Terms</a></Dialog.Close>
-                <a className="button button-primary" href="mailto:hello@danirwa.com?subject=Danirwa%20early%20access">Request early access</a>
+                <EarlyAccessButton className="button button-primary" source="mobile-menu">Request early access</EarlyAccessButton>
               </nav>
             </Dialog.Content>
           </Dialog.Portal>
@@ -212,8 +360,8 @@ function Home() {
             <h1>Stay ahead of what matters.</h1>
             <p className="hero-body">Danirwa helps you manage renewals, documents, certifications, and deadlines in one calm, organized place, so you can act before they become urgent.</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="mailto:hello@danirwa.com?subject=Danirwa%20early%20access">Request early access</a>
-              <a className="button button-secondary" href="#how-it-works"><span className="play-dot" aria-hidden="true">▶</span>See how it works</a>
+              <EarlyAccessButton className="button button-primary" source="hero">Request early access</EarlyAccessButton>
+              <a className="button button-secondary" href="#how-it-works" onClick={() => trackEvent('how_it_works_click', { source: 'hero' })}><span className="play-dot" aria-hidden="true">▶</span>See how it works</a>
             </div>
             <div className="signal-strip" aria-label="Danirwa product principles">
               <div><SignalIcon type="shield" /><span>Less stress,<br />more clarity</span></div>
@@ -322,7 +470,7 @@ function Home() {
             <p className="cta-kicker">Get started</p>
             <h2>A calmer tomorrow starts here.</h2>
             <p>Join early access and help shape Danirwa.</p>
-            <a className="button button-light" href="mailto:hello@danirwa.com?subject=Danirwa%20early%20access">Request early access</a>
+            <EarlyAccessButton className="button button-light" source="closing-cta">Request early access</EarlyAccessButton>
           </div>
         </section>
       </main>
@@ -374,7 +522,11 @@ function LegalPage({ title, eyebrow, children }) {
 function Privacy() {
   return <LegalPage title="Privacy Policy" eyebrow="Danirwa">
     <h2>What this website currently collects</h2>
-    <p>This website is designed as an informational product site. The current prototype does not include account creation, document uploads, analytics, advertising trackers, or an application database.</p>
+    <p>This website is an informational product site. It does not currently provide account creation, document uploads, or an application database.</p>
+    <h2>Early-access requests</h2>
+    <p>If you submit the early-access form, Danirwa receives the email address and interest category you provide so we can follow up about early access. The form is processed by FormSubmit, which currently states that it retains form submissions for 30 days.</p>
+    <h2>Site analytics</h2>
+    <p>Danirwa records limited product events such as page views, early-access interactions, and successful form submissions through Cloudflare Workers Analytics Engine. Our event payload intentionally excludes your email address, name, IP address, and document content.</p>
     <h2>Contact</h2>
     <p>If you choose to contact Danirwa by email, the information you include is handled through the email services used by the sender and recipient.</p>
     <h2>Future product data</h2>
@@ -468,6 +620,7 @@ function App() {
       '/support': 'Support | Danirwa',
     };
     document.title = titles[path] || 'Page not found | Danirwa';
+    trackEvent('page_view', { source: path });
   }, [path]);
 
   if (path === '/') return <Home />;
@@ -477,4 +630,10 @@ function App() {
   return <NotFound />;
 }
 
-createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
+createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <EarlyAccessProvider>
+      <App />
+    </EarlyAccessProvider>
+  </React.StrictMode>,
+);
