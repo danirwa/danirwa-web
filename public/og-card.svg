@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Danirwa social sharing card</title>
+  <desc id="desc">Danirwa. Life admin, engineered. Stay ahead of what matters.</desc>
+  <rect width="1200" height="630" fill="#F5F6F2"/>
+  <g transform="translate(74 62)">
+    <path d="M0 0h34c26 0 43 15 43 38S60 76 34 76H0V0Z" fill="#0F5B3F"/>
+    <path d="M16 15h18c16 0 27 8 27 23S50 61 34 61H16V15Z" fill="#F5F6F2"/>
+    <path d="M24 39l8 8 17-18" fill="none" stroke="#0F5B3F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 0v76M0 18h16M0 38h16M0 58h16" fill="none" stroke="#F5F6F2" stroke-width="3"/>
+    <text x="100" y="50" fill="#142018" font-size="42" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-weight="700">danirwa</text>
+  </g>
+  <text x="78" y="208" fill="#0F5B3F" font-size="25" letter-spacing="6" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-weight="700">LIFE ADMIN, ENGINEERED.</text>
+  <text x="76" y="306" fill="#142018" font-size="82" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-weight="600">Stay ahead of</text>
+  <text x="76" y="398" fill="#142018" font-size="82" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-weight="600">what matters.</text>
+  <text x="80" y="482" fill="#536159" font-size="31" font-family="Avenir Next, Segoe UI, Arial, sans-serif">Renewals, documents, certifications, and deadlines</text>
+  <text x="80" y="523" fill="#536159" font-size="31" font-family="Avenir Next, Segoe UI, Arial, sans-serif">organized into clear next steps.</text>
+  <g fill="none" stroke="#0F5B3F" stroke-width="4" stroke-linecap="round">
+    <path d="M850 440C905 440 910 385 965 385S1025 335 1092 335"/>
+    <circle cx="850" cy="440" r="10" fill="#F5F6F2"/>
+    <circle cx="965" cy="385" r="10" fill="#F5F6F2"/>
+    <circle cx="1092" cy="335" r="10" fill="#F5F6F2"/>
+  </g>
+</svg>
