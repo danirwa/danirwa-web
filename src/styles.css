@@ -814,3 +814,299 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .mobile-demo-card { display: block; max-width: 620px; margin-top: 34px; }
   .mobile-demo-card .obligation-card { margin: 0; }
 }
+
+
+/* Danirwa polish pass */
+:root {
+  --muted: #536159;
+  --line: #c7d0c8;
+}
+
+#how-it-works,
+#what-it-tracks,
+#approach {
+  scroll-margin-top: 92px;
+}
+
+.site-header {
+  background: color-mix(in srgb, var(--canvas) 96%, transparent);
+  border-bottom-color: #cbd3cc;
+}
+
+.header-inner {
+  height: 72px;
+}
+
+.wordmark {
+  gap: 11px;
+  font-size: 21px;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+}
+
+.desktop-nav {
+  color: #2f3d34;
+  font-weight: 520;
+}
+
+.nav-cta {
+  padding-inline: 18px;
+}
+
+.hero {
+  min-height: 680px;
+  padding-block: 62px 74px;
+}
+
+.hero-body {
+  color: #3f4d44;
+}
+
+.signal-strip span {
+  color: #445249;
+}
+
+.product-scene {
+  background:
+    linear-gradient(135deg, rgba(15,91,63,.105), transparent 42%),
+    #eaf0e9;
+  border-color: #ccd6cd;
+}
+
+.app-window {
+  border-color: #cfd8d0;
+  box-shadow: 0 22px 46px rgba(30, 53, 39, .09);
+}
+
+.app-overline,
+.app-summary span,
+.dates-panel-head span,
+.timeline-copy span,
+.product-footnote {
+  color: #56645b;
+}
+
+.statement {
+  padding-block: 72px;
+}
+
+.statement-copy,
+.split-heading > p,
+.tracks-heading > p,
+.track-row p,
+.approach-copy > p:not(.section-kicker),
+.approach-code > p {
+  color: #526058;
+}
+
+.demo-section {
+  padding-block: 96px 112px;
+}
+
+.demo-copy-column {
+  padding-bottom: 10vh;
+}
+
+.demo-step {
+  position: relative;
+  min-height: 50vh;
+  opacity: .64;
+  transform: translateY(5px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.demo-step.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.demo-step.is-active .step-number {
+  box-shadow: 0 0 0 5px rgba(15, 91, 63, .11);
+}
+
+.demo-step > p {
+  color: #526058;
+}
+
+.demo-stage {
+  top: 92px;
+  min-height: 570px;
+  border-color: #cbd5cc;
+  background: #eaf0e9;
+}
+
+.stage-topline {
+  color: #526058;
+}
+
+.obligation-card {
+  border-color: #ccd5cd;
+}
+
+.tracks-section {
+  padding-block: 92px 98px;
+}
+
+.track-row {
+  min-height: 88px;
+}
+
+.track-number {
+  color: #65736a;
+  font-weight: 650;
+}
+
+.track-row h3 {
+  font-weight: 680;
+}
+
+.approach-inner {
+  min-height: 470px;
+}
+
+.approach-code {
+  padding-block: 60px 54px;
+}
+
+.approach-axis {
+  color: #5e6d63;
+  font-weight: 650;
+}
+
+.approach-code path {
+  stroke-width: 2.8;
+}
+
+.approach-copy {
+  padding-block: 60px 54px;
+}
+
+.approach-principles span {
+  font-weight: 620;
+}
+
+.cta-band-inner {
+  padding-block: 70px 76px;
+}
+
+.cta-band p:not(.cta-kicker) {
+  color: #e0ebe4;
+}
+
+.cta-band .button {
+  margin-top: 30px;
+  padding-inline: 24px;
+}
+
+.footer-inner {
+  padding-block: 42px;
+}
+
+.footer-inner > div p,
+.footer-bottom {
+  color: #56645b;
+}
+
+@media (max-width: 859px) {
+  .header-inner {
+    height: 66px;
+  }
+
+  .hero {
+    padding-block: 50px 68px;
+  }
+
+  .statement {
+    padding-block: 68px;
+  }
+
+  .demo-section {
+    padding-block: 82px 94px;
+  }
+
+  .demo-step {
+    min-height: auto;
+    opacity: 1;
+    transform: none;
+  }
+
+  .demo-step.is-active .step-number {
+    box-shadow: none;
+  }
+
+  .tracks-section {
+    padding-block: 82px;
+  }
+
+  .approach-code,
+  .approach-copy {
+    padding-block: 58px;
+  }
+
+  .cta-band-inner {
+    padding-block: 62px 68px;
+  }
+}
+
+@media (max-width: 560px) {
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hero {
+    padding-top: 38px;
+    gap: 40px;
+  }
+
+  .signal-strip {
+    margin-top: 30px;
+  }
+
+  .statement {
+    padding-block: 62px;
+  }
+
+  .demo-section {
+    padding-block: 76px 86px;
+  }
+
+  .demo-step {
+    padding-block: 44px;
+  }
+
+  .tracks-section {
+    padding-block: 74px;
+  }
+
+  .approach-code {
+    padding-block: 50px;
+  }
+
+  .approach-copy {
+    padding-block: 52px;
+  }
+
+  .cta-band-inner {
+    padding-block: 58px 64px;
+  }
+
+  .footer-inner {
+    padding-block: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-step,
+  .demo-step.is-active {
+    opacity: 1;
+    transform: none;
+  }
+
+  .demo-step.is-active .step-number {
+    box-shadow: none;
+  }
+}
