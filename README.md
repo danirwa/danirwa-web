@@ -8,6 +8,7 @@ Public product website for Danirwa.
 - Vite 7
 - Radix UI Dialog for accessible mobile navigation
 - Custom CSS design tokens and responsive layout
+- Cloudflare Workers static asset deployment
 
 ## Local development
 
@@ -22,11 +23,14 @@ npm run dev
 npm run build
 ```
 
-Cloudflare Pages settings:
+Cloudflare Workers build settings:
 
+- Production branch: `main`
 - Build command: `npm run build`
-- Output directory: `dist`
+- Deploy command: `npx wrangler deploy`
+- Root directory: `/`
 - Node version: 22
+- Static asset directory: `dist`
 
 ## Routes
 
