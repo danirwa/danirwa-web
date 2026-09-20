@@ -1,5 +1,7 @@
 node_modules/
 dist/
 .vite/
+.wrangler/
+.dev.vars*
 .DS_Store
 *.log
