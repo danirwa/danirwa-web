@@ -246,7 +246,7 @@ function Home() {
             <div className="demo-copy-column">
               {obligations.map((item, index) => (
                 <article
-                  className="demo-step"
+                  className={`demo-step ${activeStep === index ? 'is-active' : ''}`}
                   key={item.title}
                   data-step={index}
                   ref={(node) => { stepRefs.current[index] = node; }}
