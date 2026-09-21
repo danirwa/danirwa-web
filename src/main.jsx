@@ -156,6 +156,7 @@ function EarlyAccessProvider({ children }) {
                     <option value="insurance">Insurance renewals</option>
                     <option value="certifications">Certifications and training</option>
                     <option value="family">Family admin</option>
+                    <option value="offline">Reliable access with little or no data</option>
                     <option value="other">Something else</option>
                   </select>
 
@@ -260,6 +261,9 @@ function SignalIcon({ type }) {
   if (type === 'family') {
     return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.5" cy="8" r="2.6"/><circle cx="15.8" cy="9" r="2.2"/><path d="M3.8 18c.7-3.2 2.4-4.8 4.9-4.8s4.3 1.6 5 4.8M13.5 14.4c.8-.8 1.8-1.2 3-1.2 2.1 0 3.5 1.3 4.1 3.9"/></svg>;
   }
+  if (type === 'offline') {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3.8" width="14" height="16.4" rx="2.2"/><path d="M9 16.5h6M8.2 10.4c2.2-2.2 5.6-2.2 7.8 0M10.4 12.6c1-1 2.4-1 3.4 0"/></svg>;
+  }
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.6 19 6v5.5c0 4.3-2.8 7.4-7 9-4.2-1.6-7-4.7-7-9V6l7-2.4Z"/><path d="m8.4 12 2.3 2.3 4.9-5"/></svg>;
 }
 
@@ -358,7 +362,7 @@ function Home() {
           <div className="hero-copy">
             <p className="intro-line">Life admin, engineered.</p>
             <h1>Stay ahead of what matters.</h1>
-            <p className="hero-body">Danirwa helps you manage renewals, documents, certifications, and deadlines in one calm, organized place, so you can act before they become urgent.</p>
+            <p className="hero-body">Danirwa helps you manage renewals, documents, certifications, and deadlines in one calm, organized place, so you can act before they become urgent. Core life-admin features are designed to keep working with little or no connectivity.</p>
             <div className="hero-actions">
               <EarlyAccessButton className="button button-primary" source="hero">Request early access</EarlyAccessButton>
               <a className="button button-secondary" href="#how-it-works" onClick={() => trackEvent('how_it_works_click', { source: 'hero' })}><span className="play-dot" aria-hidden="true">▶</span>See how it works</a>
@@ -366,6 +370,7 @@ function Home() {
             <div className="signal-strip" aria-label="Danirwa product principles">
               <div><SignalIcon type="shield" /><span>Less stress,<br />more clarity</span></div>
               <div><SignalIcon type="clock" /><span>Be ready<br />before it&apos;s urgent</span></div>
+              <div><SignalIcon type="offline" /><span>Works with little<br />or no data</span></div>
               <div><SignalIcon type="family" /><span>For you<br />and your family</span></div>
             </div>
           </div>
@@ -439,6 +444,38 @@ function Home() {
           </div>
         </section>
 
+        <section className="offline-section" aria-labelledby="offline-title">
+          <div className="shell offline-inner">
+            <div className="offline-copy">
+              <p className="section-kicker">Designed for real-world connectivity</p>
+              <h2 id="offline-title">Your life admin should not stop when your internet does.</h2>
+              <p>Danirwa is built so the core experience can remain useful with little or no connectivity. Locally stored obligations, Renewal GPS, device reminders, and supported on-device document reading do not need a constant server connection.</p>
+              <blockquote>
+                <strong>The life-admin clock lives with you, not with the server.</strong>
+                <span>Future cloud services are intended to protect, restore, and synchronize your data — not become a gatekeeper for core operation.</span>
+              </blockquote>
+            </div>
+            <div className="offline-proof" aria-label="Offline-first Danirwa capabilities">
+              <article>
+                <span className="offline-number">01</span>
+                <div><strong>Local-first records</strong><p>Your essential obligations stay available on your device.</p></div>
+              </article>
+              <article>
+                <span className="offline-number">02</span>
+                <div><strong>Renewal GPS on-device</strong><p>Urgency and next-action timing are calculated locally.</p></div>
+              </article>
+              <article>
+                <span className="offline-number">03</span>
+                <div><strong>Device-local reminders</strong><p>Important reminders do not depend on a server responding at the right moment.</p></div>
+              </article>
+              <article>
+                <span className="offline-number">04</span>
+                <div><strong>Private document reading</strong><p>Supported JPG and PNG text recognition runs on-device and keeps source content local.</p></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section id="approach" className="approach-section">
           <div className="shell approach-inner">
             <div className="approach-code" aria-hidden="true">
@@ -459,6 +496,7 @@ function Home() {
               <div className="approach-principles">
                 <span>Clarity over clutter</span>
                 <span>Practical automation</span>
+                <span>Offline-first by design</span>
                 <span>Built for real life</span>
               </div>
             </div>
