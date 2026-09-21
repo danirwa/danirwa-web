@@ -277,7 +277,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .app-summary {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   margin-top: 18px;
 }
@@ -632,7 +632,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .approach-principles {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0;
   margin-top: 40px;
   border-top: 1px solid #d2d8d1;
