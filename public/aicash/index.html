@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free AI Cash Starter Kit | AI Cash Mentor HQ</title>
+  <meta name="description" content="Get the free AI Cash Starter Kit: 10 practical AI workflows, 25 reusable prompts, an idea scorecard, and a 7-day action plan." />
+  <meta name="theme-color" content="#050811" />
+  <meta property="og:title" content="Free AI Cash Starter Kit" />
+  <meta property="og:description" content="Practical AI workflows, prompts, validation tools, and a 7-day action plan. No hype." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://danirwa.com/aicash" />
+  <meta property="og:image" content="https://danirwa.com/aicash/og-card.svg" />
+  <link rel="canonical" href="https://danirwa.com/aicash" />
+  <link rel="stylesheet" href="/aicash/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="/aicash"><div class="mark">AI</div><span>AI Cash Mentor HQ</span></a>
+      <a class="navlink" href="#get-kit">Free Starter Kit ↓</a>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Free • Practical • No hype</div>
+          <h1><span class="grad">Turn AI into a practical workflow — not another saved post.</span></h1>
+          <p class="lead">The AI Cash Starter Kit gives you a simple system for finding useful problems, testing ideas, shaping an offer, and creating content that can lead somewhere.</p>
+          <p class="micro">Built for beginners, side-hustlers, creators, and operators who want clear next steps — not income promises.</p>
+        </div>
+
+        <div class="card" id="get-kit">
+          <div class="kicker">AI Cash Starter Kit</div>
+          <div class="kit-title">A practical starting point for building smarter with AI.</div>
+          <p class="muted">Inside the free kit:</p>
+          <ul class="checks">
+            <li><span class="check">✓</span><span><strong>10 practical AI workflow ideas</strong><br><span class="muted">Real problems and useful deliverables — not generic hustle lists.</span></span></li>
+            <li><span class="check">✓</span><span><strong>25 reusable prompts</strong><br><span class="muted">Research, validation, positioning, offers, content, and operations.</span></span></li>
+            <li><span class="check">✓</span><span><strong>AI Cash Scorecard</strong><br><span class="muted">A quick filter for deciding which ideas deserve more time.</span></span></li>
+            <li><span class="check">✓</span><span><strong>7-day action plan</strong><br><span class="muted">Move from problem → validation → offer → first distribution test.</span></span></li>
+          </ul>
+
+          <form class="form" action="https://formsubmit.co/aicash@danirwa.com" method="POST" onsubmit="trackLead()">
+            <input type="hidden" name="_subject" value="New AI Cash Starter Kit request" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://danirwa.com/aicash/thanks" />
+            <input type="hidden" name="_url" value="https://danirwa.com/aicash" />
+            <input type="hidden" name="source" value="AI Cash Mentor HQ Instagram" />
+            <input type="hidden" name="_autoresponse" value="Welcome to AI Cash Mentor HQ. Your free AI Cash Starter Kit is ready here: https://danirwa.com/aicash/starter-kit — Save the link, work through the scorecard, and start with one problem worth solving. No earnings promises — just practical AI workflows. Questions? Reply to aicash@danirwa.com" />
+            <label class="honey" aria-hidden="true">Leave empty<input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
+            <input class="field" type="email" name="email" placeholder="Enter your best email" autocomplete="email" required aria-label="Email address" />
+            <button class="btn" type="submit">Send Me the Free Starter Kit</button>
+            <div class="privacy">We use your email to deliver the kit. No fake income claims. No spam.</div>
+          </form>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>A better way to think about AI income.</h2>
+          <p>Start with a problem worth solving. Use AI to improve speed, clarity, research, delivery, or scale.</p>
+        </div>
+        <div class="grid3">
+          <div class="item"><div class="num">01</div><h3>Find the problem</h3><p>Look for recurring, expensive, annoying work people already want solved.</p></div>
+          <div class="item"><div class="num">02</div><h3>Validate demand</h3><p>Check whether real buyers, searches, communities, and existing solutions indicate demand.</p></div>
+          <div class="item"><div class="num">03</div><h3>Build the smallest useful offer</h3><p>Create something specific enough to test before spending weeks building.</p></div>
+          <div class="item"><div class="num">04</div><h3>Use AI as leverage</h3><p>Accelerate research, drafts, analysis, operations, and content without pretending AI is the business.</p></div>
+          <div class="item"><div class="num">05</div><h3>Create useful content</h3><p>Teach the problem, show the workflow, and give people a reason to save, share, or click.</p></div>
+          <div class="item"><div class="num">06</div><h3>Measure what matters</h3><p>Track leads, clicks, replies, saves, and conversions — not follower count alone.</p></div>
+        </div>
+      </section>
+
+      <section class="section"><div class="principle">AI can <span>accelerate</span> a business. It does not magically create demand.</div></section>
+    </main>
+
+    <footer class="footer"><div class="footerrow"><div>© 2026 AI Cash Mentor HQ • A Danirwa digital project</div><div>Educational content only. Results vary. No earnings guarantees.</div></div></footer>
+  </div>
+  <script>
+    function track(event, source){
+      fetch('/api/event',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event:event,path:location.pathname,source:source||''}),keepalive:true}).catch(function(){});
+    }
+    function trackLead(){ track('ai_cash_lead_submit','starter-kit-form'); }
+    track('ai_cash_page_view','landing');
+  </script>
+</body>
+</html>
