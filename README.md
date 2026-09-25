@@ -38,5 +38,6 @@ Cloudflare Workers build settings:
 - `/privacy`
 - `/terms`
 - `/support`
+- <!-- cloudflare redeploy trigger: 2026-09-25 -->
 
 The product UI on the homepage is explicitly labeled as a prototype and uses example data.
