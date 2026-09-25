@@ -4,6 +4,18 @@ const allowedEvents = new Set([
   'early_access_success',
   'early_access_error',
   'how_it_works_click',
+  'ai_cash_page_view',
+  'ai_cash_lead_submit',
+  'ai_cash_kit_view',
+]);
+
+const staticRoutes = new Map([
+  ['/aicash', '/aicash/index.html'],
+  ['/aicash/', '/aicash/index.html'],
+  ['/aicash/thanks', '/aicash/thanks.html'],
+  ['/aicash/thanks/', '/aicash/thanks.html'],
+  ['/aicash/starter-kit', '/aicash/starter-kit.html'],
+  ['/aicash/starter-kit/', '/aicash/starter-kit.html'],
 ]);
 
 function json(body, init = {}) {
@@ -60,6 +72,13 @@ export default {
 
     if (url.pathname === '/api/health') {
       return json({ ok: true, service: 'danirwa-web' });
+    }
+
+    const assetPath = staticRoutes.get(url.pathname);
+    if (assetPath) {
+      const assetUrl = new URL(request.url);
+      assetUrl.pathname = assetPath;
+      return env.ASSETS.fetch(new Request(assetUrl, request));
     }
 
     return env.ASSETS.fetch(request);
