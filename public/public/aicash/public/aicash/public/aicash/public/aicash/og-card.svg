@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">AI Cash Starter Kit</title>
+  <desc id="desc">Free practical AI workflows, prompts, scorecard, and 7-day action plan from AI Cash Mentor HQ.</desc>
+  <defs>
+    <radialGradient id="bg" cx="15%" cy="5%" r="110%"><stop offset="0" stop-color="#173b7a"/><stop offset=".42" stop-color="#08111f"/><stop offset="1" stop-color="#04070d"/></radialGradient>
+    <linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#f4c95d"/><stop offset=".5" stop-color="#ffe59a"/><stop offset="1" stop-color="#8bd6ff"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="156" cy="150" r="72" fill="#07101e" stroke="#f4c95d" stroke-width="5"/>
+  <text x="156" y="171" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="900" fill="#f4c95d">AI</text>
+  <text x="260" y="125" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#aeb8ca">AI CASH MENTOR HQ</text>
+  <text x="80" y="300" font-family="Arial, sans-serif" font-size="76" font-weight="900" fill="url(#gold)">AI Cash Starter Kit</text>
+  <text x="84" y="374" font-family="Arial, sans-serif" font-size="34" fill="#ffffff">10 workflows • 25 prompts • scorecard • 7-day plan</text>
+  <text x="84" y="455" font-family="Arial, sans-serif" font-size="28" fill="#aeb8ca">Practical. Specific. No hype.</text>
+  <rect x="84" y="500" rx="24" ry="24" width="270" height="58" fill="#f4c95d"/>
+  <text x="219" y="538" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#07111e">FREE STARTER KIT</text>
+</svg>
