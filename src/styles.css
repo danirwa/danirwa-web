@@ -1432,3 +1432,244 @@ button, a { -webkit-tap-highlight-color: transparent; }
     animation: none;
   }
 }
+
+
+/* Google Workspace referral review */
+.workspace-page { background: var(--canvas); }
+
+.workspace-hero {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 72px;
+  align-items: center;
+  padding-block: 88px 96px;
+}
+
+.workspace-hero-copy h1,
+.workspace-story h2,
+.workspace-comparison h2,
+.workspace-principles h2,
+.workspace-offer h2 {
+  margin: 14px 0 0;
+  color: var(--ink);
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  font-weight: 570;
+}
+
+.workspace-hero-copy h1 { font-size: clamp(52px, 6vw, 84px); max-width: 900px; }
+.workspace-story h2,
+.workspace-comparison h2,
+.workspace-principles h2,
+.workspace-offer h2 { font-size: clamp(38px, 4.7vw, 62px); }
+
+.workspace-lede {
+  margin: 26px 0 0;
+  max-width: 68ch;
+  color: #435148;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.workspace-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.workspace-disclosure {
+  margin-top: 26px;
+  max-width: 72ch;
+  padding: 15px 18px;
+  border: 1px solid #c8d2ca;
+  border-radius: 14px;
+  background: #edf2ed;
+  color: #445249;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.workspace-story-card {
+  padding: 30px;
+  border: 1px solid #c8d2ca;
+  border-radius: 26px;
+  background: #edf2ed;
+  box-shadow: 0 20px 46px rgba(27, 48, 34, .08);
+}
+
+.workspace-card-kicker {
+  margin: 0 0 26px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 760;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.workspace-metric {
+  display: grid;
+  gap: 5px;
+  padding: 22px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid #d2dad3;
+}
+
+.workspace-metric span { color: var(--muted); font-size: 13px; }
+.workspace-metric strong { font-size: 46px; line-height: 1; letter-spacing: -0.05em; }
+.workspace-metric small { color: var(--muted); }
+.workspace-metric.is-standard { background: var(--accent-strong); color: #fff; border-color: var(--accent-strong); }
+.workspace-metric.is-standard span,
+.workspace-metric.is-standard small { color: #dfe9e2; }
+.workspace-arrow { padding: 12px 0; text-align: center; color: var(--accent); font-size: 24px; }
+.workspace-card-note { margin: 22px 0 0; color: var(--muted); line-height: 1.6; font-size: 14px; }
+
+.workspace-story {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 72px;
+  padding-block: 88px;
+  border-top: 1px solid var(--line);
+}
+
+.workspace-story-copy p {
+  margin: 0;
+  color: #4d5b52;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.workspace-story-copy p + p { margin-top: 20px; }
+
+.workspace-comparison { padding-block: 94px 108px; }
+
+.workspace-plan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 48px;
+}
+
+.workspace-plan-card {
+  padding: 30px;
+  border: 1px solid #cad3cb;
+  border-radius: 22px;
+  background: #fff;
+}
+.workspace-plan-card.is-featured {
+  background: #e9f0ea;
+  border-color: #a8b9ac;
+}
+.workspace-plan-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.workspace-plan-head span { color: var(--accent); font-weight: 760; }
+.workspace-plan-head strong { font-size: 20px; }
+.workspace-plan-card ul {
+  margin: 24px 0 0;
+  padding-left: 20px;
+  color: #3f4d44;
+  line-height: 1.9;
+}
+.workspace-plan-card > p {
+  margin: 22px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.workspace-principles {
+  background: #edf1eb;
+  border-block: 1px solid #d3dbd4;
+}
+.workspace-principles-inner {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 72px;
+  padding-block: 88px;
+}
+.workspace-question-list article {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 18px;
+  padding: 22px 0;
+  border-top: 1px solid #cfd8d0;
+}
+.workspace-question-list article:last-child { border-bottom: 1px solid #cfd8d0; }
+.workspace-question-list span {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 760;
+  letter-spacing: .12em;
+}
+.workspace-question-list strong { font-size: 18px; }
+.workspace-question-list p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.workspace-offer {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 72px;
+  align-items: start;
+  padding-block: 92px 110px;
+}
+.workspace-offer > div > p:not(.section-kicker):not(.workspace-fine-print) {
+  max-width: 68ch;
+  margin: 22px 0 0;
+  color: #4d5b52;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.workspace-fine-print {
+  margin: 24px 0 0;
+  max-width: 75ch;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.workspace-source-card {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.workspace-source-card a {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 859px) {
+  .workspace-hero,
+  .workspace-story,
+  .workspace-principles-inner,
+  .workspace-offer {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .workspace-plan-grid { grid-template-columns: 1fr; }
+  .workspace-hero { padding-block: 64px 76px; }
+  .workspace-story,
+  .workspace-principles-inner { padding-block: 72px; }
+  .workspace-comparison { padding-block: 78px 90px; }
+  .workspace-offer { padding-block: 76px 92px; }
+}
+
+@media (max-width: 560px) {
+  .workspace-hero-copy h1 { font-size: 48px; }
+  .workspace-actions { flex-direction: column; }
+  .workspace-actions .button { width: 100%; }
+  .workspace-story-card,
+  .workspace-plan-card { padding: 22px; border-radius: 18px; }
+  .workspace-plan-head { display: grid; gap: 6px; }
+}
