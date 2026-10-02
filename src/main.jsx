@@ -33,6 +33,8 @@ const obligations = [
   },
 ];
 
+const workspaceReferralUrl = 'https://referworkspace.app.goo.gl/cmBU';
+
 const EarlyAccessContext = React.createContext(null);
 
 function trackEvent(event, detail = {}) {
@@ -180,6 +182,20 @@ function EarlyAccessProvider({ children }) {
 function EarlyAccessButton({ source, className, children }) {
   const { openEarlyAccess } = useEarlyAccess();
   return <button className={className} type="button" onClick={() => openEarlyAccess(source)}>{children}</button>;
+}
+
+function WorkspaceReferralLink({ source, className, children }) {
+  return (
+    <a
+      className={className}
+      href={workspaceReferralUrl}
+      target="_blank"
+      rel="sponsored noopener noreferrer"
+      onClick={() => trackEvent('workspace_referral_click', { source })}
+    >
+      {children}
+    </a>
+  );
 }
 
 function BrandMark({ className = '' }) {
@@ -542,6 +558,160 @@ function DemoCard({ item, activeStep = 0 }) {
   );
 }
 
+function WorkspaceReview() {
+  return (
+    <>
+      <Header />
+      <main className="workspace-page">
+        <section className="workspace-hero shell">
+          <div className="workspace-hero-copy">
+            <p className="section-kicker">Danirwa field note</p>
+            <h1>Google Workspace for a small business: Starter vs Standard.</h1>
+            <p className="workspace-lede">
+              Danirwa uses Google Workspace for business email, Drive, Docs, and day-to-day operations.
+              We started on Business Starter. As our working files grew, Starter&apos;s 30 GB pooled storage
+              per user became too tight, so we moved to Business Standard.
+            </p>
+            <div className="workspace-actions">
+              <WorkspaceReferralLink source="workspace-hero" className="button button-primary">
+                View Google Workspace
+              </WorkspaceReferralLink>
+              <a className="button button-secondary" href="#workspace-comparison">Compare the plans</a>
+            </div>
+            <div className="workspace-disclosure" role="note">
+              <strong>Referral disclosure.</strong> Danirwa may receive a cash reward if you start an eligible
+              new Google Workspace account through links on this page. That does not add a fee to your purchase.
+              Promotions, eligibility, pricing, and plan terms are set by Google.
+            </div>
+          </div>
+          <aside className="workspace-story-card" aria-label="Danirwa Workspace experience">
+            <p className="workspace-card-kicker">What changed for us</p>
+            <div className="workspace-metric">
+              <span>Starter</span>
+              <strong>30 GB</strong>
+              <small>pooled storage per user</small>
+            </div>
+            <div className="workspace-arrow" aria-hidden="true">↓</div>
+            <div className="workspace-metric is-standard">
+              <span>Standard</span>
+              <strong>2 TB</strong>
+              <small>pooled storage per user</small>
+            </div>
+            <p className="workspace-card-note">
+              The upgrade was less about adding software and more about removing storage as an operating constraint.
+            </p>
+          </aside>
+        </section>
+
+        <section className="workspace-story shell" aria-labelledby="workspace-story-title">
+          <div>
+            <p className="section-kicker">The real reason we upgraded</p>
+            <h2 id="workspace-story-title">Starter was useful. Then storage became friction.</h2>
+          </div>
+          <div className="workspace-story-copy">
+            <p>
+              For a lean business, Starter gave Danirwa the essentials we needed: a custom business email,
+              Google Drive, Docs, and a familiar collaboration stack. The problem was not the product.
+              The problem was the ceiling.
+            </p>
+            <p>
+              Once the workspace crossed the Starter storage allowance, cleanup became a recurring distraction.
+              Business Standard gave us materially more headroom, so storage stopped competing with the work itself.
+            </p>
+          </div>
+        </section>
+
+        <section id="workspace-comparison" className="workspace-comparison shell" aria-labelledby="workspace-comparison-title">
+          <div className="section-heading split-heading">
+            <div>
+              <p className="section-kicker">Starter vs Standard</p>
+              <h2 id="workspace-comparison-title">Choose based on operating needs, not feature count.</h2>
+            </div>
+            <p>Google can change pricing, promotions, and included features. Confirm current terms on Google before purchasing.</p>
+          </div>
+
+          <div className="workspace-plan-grid">
+            <article className="workspace-plan-card">
+              <div className="workspace-plan-head">
+                <span>Business Starter</span>
+                <strong>Lean foundation</strong>
+              </div>
+              <ul>
+                <li><strong>30 GB</strong> pooled storage per user</li>
+                <li>Custom business email</li>
+                <li>Google Drive and core collaboration tools</li>
+                <li>Gemini AI assistance in Gmail</li>
+              </ul>
+              <p>
+                A practical starting point when your files are light and storage is unlikely to become a near-term constraint.
+              </p>
+            </article>
+
+            <article className="workspace-plan-card is-featured">
+              <div className="workspace-plan-head">
+                <span>Business Standard</span>
+                <strong>More operating headroom</strong>
+              </div>
+              <ul>
+                <li><strong>2 TB</strong> pooled storage per user</li>
+                <li>Custom business email</li>
+                <li>Expanded Workspace collaboration capabilities</li>
+                <li>Gemini across more Workspace apps</li>
+              </ul>
+              <p>
+                This is the plan Danirwa moved to after storage became a real workflow constraint.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section className="workspace-principles">
+          <div className="shell workspace-principles-inner">
+            <div>
+              <p className="section-kicker">What I would consider</p>
+              <h2>Three questions before paying more.</h2>
+            </div>
+            <div className="workspace-question-list">
+              <article><span>01</span><div><strong>Is storage already creating work?</strong><p>If you are constantly deleting, moving, or rationing files, the cheaper plan may already be costing you time.</p></div></article>
+              <article><span>02</span><div><strong>Will the extra capacity actually be used?</strong><p>If your team mostly uses email and lightweight documents, Starter may remain enough for a long time.</p></div></article>
+              <article><span>03</span><div><strong>Are you buying for today or for the next operating stage?</strong><p>Upgrade when the added capacity removes a real constraint, not simply because a higher tier exists.</p></div></article>
+            </div>
+          </div>
+        </section>
+
+        <section className="workspace-offer shell">
+          <div>
+            <p className="section-kicker">Google referral program</p>
+            <h2>Want to try Google Workspace?</h2>
+            <p>
+              Use the Danirwa referral link to view Google Workspace. Eligible new customers may also qualify for
+              first-year savings through a promotion code. Promotion codes are shared individually and availability varies.
+            </p>
+            <div className="workspace-actions">
+              <WorkspaceReferralLink source="workspace-closing" className="button button-primary">
+                View Google Workspace
+              </WorkspaceReferralLink>
+              <a className="button button-secondary" href="mailto:hello@danirwa.com?subject=Google%20Workspace%20promo%20code">
+                Ask about a promo code
+              </a>
+            </div>
+            <p className="workspace-fine-print">
+              Google Workspace is a Google product. Danirwa is an independent participant in the Google Workspace Referral Program.
+              This page reflects Danirwa&apos;s own operating experience and is not a guarantee that the same plan is right for every business.
+            </p>
+          </div>
+          <div className="workspace-source-card">
+            <strong>Verify current details</strong>
+            <a href="https://workspace.google.com/pricing" target="_blank" rel="noopener noreferrer">Google Workspace pricing ↗</a>
+            <a href="https://workspace.google.com/referral-program/" target="_blank" rel="noopener noreferrer">Google Workspace Referral Program ↗</a>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
 function LegalPage({ title, eyebrow, children }) {
   return (
     <>
@@ -637,6 +807,7 @@ function Footer() {
           <a href="/#what-it-tracks">Use cases</a>
           <a href="/#approach">Our approach</a>
           <a href="/support">Support</a>
+          <a href="/google-workspace">Google Workspace review</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
           <a href="mailto:hello@danirwa.com">hello@danirwa.com</a>
@@ -656,6 +827,7 @@ function App() {
       '/privacy': 'Privacy Policy | Danirwa',
       '/terms': 'Terms of Service | Danirwa',
       '/support': 'Support | Danirwa',
+      '/google-workspace': 'Google Workspace Starter vs Standard | Danirwa',
     };
     document.title = titles[path] || 'Page not found | Danirwa';
     trackEvent('page_view', { source: path });
@@ -665,6 +837,7 @@ function App() {
   if (path === '/privacy') return <Privacy />;
   if (path === '/terms') return <Terms />;
   if (path === '/support') return <Support />;
+  if (path === '/google-workspace') return <WorkspaceReview />;
   return <NotFound />;
 }
 
