@@ -729,18 +729,36 @@ function LegalPage({ title, eyebrow, children }) {
 
 function Privacy() {
   return <LegalPage title="Privacy Policy" eyebrow="Danirwa">
-    <h2>What this website currently collects</h2>
-    <p>This website is an informational product site. It does not currently provide account creation, document uploads, or an application database.</p>
-    <h2>Early-access requests</h2>
-    <p>If you submit the early-access form, Danirwa receives the email address and interest category you provide so we can follow up about early access. The form is processed by FormSubmit, which currently states that it retains form submissions for 30 days.</p>
-    <h2>Site analytics</h2>
-    <p>Danirwa records limited product events such as page views, early-access interactions, and successful form submissions through Cloudflare Workers Analytics Engine. Our event payload intentionally excludes your email address, name, IP address, and document content.</p>
-    <h2>Contact</h2>
-    <p>If you choose to contact Danirwa by email, the information you include is handled through the email services used by the sender and recipient.</p>
-    <h2>Future product data</h2>
-    <p>The Danirwa application is still in development. Data collection, storage, deletion, retention, security, and account practices for the product have not been finalized on this website. This policy must be updated before those capabilities are launched.</p>
-    <h2>Questions</h2>
-    <p>Questions about this draft can be sent to <a href="mailto:hello@danirwa.com">hello@danirwa.com</a>.</p>
+    <p><strong>Last reviewed: October 11, 2026.</strong> This policy covers the Danirwa website and the Danirwa V0.1 mobile application. The mobile app remains in pre-release testing. We will review this notice again before wider beta distribution.</p>
+
+    <h2>1. Danirwa mobile app: information you choose to save</h2>
+    <p>Danirwa helps you track dates and responsibilities. When you create or confirm an obligation, the app stores information you enter, such as a title, category, due date, reminder timing, notes, optional responsibility label, recurrence, and completion or archive state. Depending on what you enter, these details can be personal or sensitive. You do not need to create a Danirwa account to use the V0.1 core app.</p>
+    <p>V0.1 keeps these obligation records in secure local storage on your device, using operating-system-backed secure storage. The core obligation, search, review, and device-reminder features are designed to function without a continuous internet connection. There is no required Danirwa cloud account or cross-device synchronization service in V0.1.</p>
+
+    <h2>2. Documents, image reading, and PDF reading</h2>
+    <p>If you choose a JPG, PNG, or PDF, Danirwa processes the selected content for text and possible dates on your device using its document-reading components. PDF review is limited to the first three pages in V0.1. You review and confirm suggested details before an obligation is saved. The source document is not intentionally added to Danirwa's stored obligation record, and V0.1 does not provide a feature that uploads source documents to a Danirwa server.</p>
+    <p>The operating system, file provider, and supporting libraries may manage temporary files or caches; those boundaries are being checked as part of release testing. Keep your original documents in a place you trust. Do not assume that deleting a Danirwa obligation deletes its original file from another app or provider.</p>
+
+    <h2>3. Reminders and optional calendar handoff</h2>
+    <p>Danirwa schedules device-local reminders. Notification titles and bodies use generic wording instead of showing the saved obligation title. A reminder can still reveal that you use Danirwa or that a date is due to someone who can see your notifications. You can manage notification permission in your device settings.</p>
+    <p>If you select Add to calendar, Danirwa opens your device's calendar editor and passes the event details you choose to review, which may include the title, date, or notes. Saving the event is your decision. Once saved in a separate calendar service, that service's privacy practices apply.</p>
+
+    <h2>4. Local storage, data retention, and your choices</h2>
+    <p>Your saved obligation records remain on your device as you use the app. You can update active items and manage completed or archived records using available app controls. V0.1 does not yet offer a verified cloud backup, account-based recovery, or a complete in-app permanent-deletion/export tool. Removing the app or losing the device may make local information unavailable or irrecoverable. Device backup and recovery behavior can vary by operating system and settings.</p>
+    <p>Danirwa cannot retrieve locally stored obligations from its servers because V0.1 has no obligation-sync account service. To ask about your records or the available privacy options, contact <a href="mailto:hello@danirwa.com">hello@danirwa.com</a>. Please do not email identity documents or sensitive obligation details unless necessary.</p>
+
+    <h2>5. Website: early-access form and analytics</h2>
+    <p>Our website is separate from the local mobile-app records. If you submit an early-access request, you provide an email address, an interest category, and form context such as the page and referral source. We use that information to respond to your request. The submission passes through FormSubmit and our email provider; those services may process and retain submission data under their own terms.</p>
+    <p>The website also records limited events such as page visits and early-access interactions through Cloudflare Workers Analytics Engine. Our custom event payload contains an event type, page path, and source rather than the obligation content stored on your phone. Hosting and third-party service providers may still process technical connection information as part of delivering their services.</p>
+    <p>To withdraw an early-access request or ask us to delete information from our website contact records, email <a href="mailto:hello@danirwa.com">hello@danirwa.com</a>. Some information may need to be retained where required for legitimate administrative or legal purposes.</p>
+
+    <h2>6. Outside services and technical data</h2>
+    <p>V0.1 uses third-party software components to support encrypted device storage, notifications, file selection, PDF rendering, and on-device text recognition. We are verifying the privacy behavior of those components and the final signed app packages before expanding distribution. Opening a website, choosing a file from another provider, or handing an event to a calendar app may involve separate services with their own terms.</p>
+    <p>The app does not require users to sign in to a Danirwa server for core tasks. We do not currently offer a Danirwa-managed cloud location for syncing obligations. This description should not be interpreted as a guarantee that an operating system or third-party dependency makes no technical network connections.</p>
+
+    <h2>7. Policy changes and contact</h2>
+    <p>We will update this policy if the app's features, third-party services, or data handling change. Before wider beta release, we will also align the final signed app, its in-app privacy link, Apple's App Privacy information, and Google Play Data safety declarations with this policy.</p>
+    <p>Privacy questions, access requests for website information, or support: <a href="mailto:hello@danirwa.com">hello@danirwa.com</a>. For general help, visit <a href="/support">Danirwa Support</a>.</p>
   </LegalPage>;
 }
 
